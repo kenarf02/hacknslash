@@ -16,6 +16,7 @@ public class UIControl : MonoBehaviour
     Text levelText;
     [SerializeField][Tooltip("Slots in spell InGame UI")]
     GameObject[] spellslots;
+    [SerializeField]
     Image[] spellslotsicons = new Image[3];
     [SerializeField]
     LevelObject levelObject;

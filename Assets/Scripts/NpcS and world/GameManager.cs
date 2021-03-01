@@ -13,9 +13,13 @@ public class GameManager : MonoBehaviour
     LevelObject levelobj;
     [SerializeField]
     EqSaver eqSaver;
+    [SerializeField]
+    SpellBookUI spellBookUI;
     private void Awake()
     {
+        GetComponent<SpellBook>().buildDataBase();
         levelobj.Load();
+        spellBookUI.Initialize();
         if (SceneManager.GetActiveScene().name == "Overworld")
         {
             player.transform.position = levelobj.OverworldPosition;

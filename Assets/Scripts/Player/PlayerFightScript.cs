@@ -217,7 +217,7 @@ public class PlayerFightScript : MonoBehaviour
     {
         return UnityEngine.Random.Range(MinDmg, MaxDmg);
     }
-    int[] manacosts()
+    public int[] manacosts()
     {
         int[] param = new int[3];
         for (int i = 0; i < spells.Length; i++)

@@ -8,12 +8,8 @@ public class SpellBook : MonoBehaviour
     #region Prefabs and variables
 
     #endregion
-    private void Awake()
-    {
-        buildDataBase();
-        
-    }
-    void buildDataBase()
+   
+   public void buildDataBase()
     {
         SpellDataBase = new List<Spell>() { 
             gameObject.AddComponent<FireBall>(),

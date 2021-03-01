@@ -15,7 +15,8 @@ public class Exp : MonoBehaviour
         {
             new ExpCategory("Melee fighting",""),
             new ExpCategory("Spell casting", "")
-        }; 
+        };
+        LoadExp();
     }
    
     public void CheckforLevelUp()
@@ -31,11 +32,33 @@ public class Exp : MonoBehaviour
         {
             LevelUp();
         }
+        SaveExp();
     }
     void LevelUp()
     {
         Debug.LogError("Level up");
         gm.Level += 1;
         GetComponent<UIControl>().SetLevel(gm.Level);
+    }
+
+    void SaveExp()
+    {
+        foreach(ExpCategory category in expCategories)
+        {
+            PlayerPrefs.SetInt(category.title, category.currentlevel);
+            PlayerPrefs.SetInt(category.title + "Remaining", category.expToNext);
+        }
+    }
+    public void LoadExp()
+    {
+        foreach (ExpCategory category in expCategories)
+        {
+            for(int i = 0; i < PlayerPrefs.GetInt(category.title); i++)
+            {
+                category.levelUp();
+                category.expToNext = PlayerPrefs.GetInt(category.title + "Remaining");
+            }
+        }
+        CheckforLevelUp();
     }
 }

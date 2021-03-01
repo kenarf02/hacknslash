@@ -18,12 +18,19 @@ public class SpellBookUI : MonoBehaviour
     public int[] chosenspells;
     [SerializeField]
     UIControl uIControl;
+
     private void Awake()
+    {
+        Initialize();
+    }
+    public void Initialize()
     {
         playerFightScript = GameObject.Find("Player").GetComponent<PlayerFightScript>();
         chosenspells = new int[] { -1, -1, -1 };
         spellBook = GameObject.Find("GAME MANAGER").GetComponent<SpellBook>();
         equipmentManager = GameObject.Find("EQUIPMENT MANAGER").GetComponent<EquipmentManager>();
+        loadPlayerPrefsSpells();
+        uIControl.CheckIfCanAffordSpells(playerFightScript.Mana,playerFightScript.manacosts());
     }
     private void OnEnable()
     {
@@ -60,6 +67,7 @@ public class SpellBookUI : MonoBehaviour
     {
         for (int i = 0; i < chosenspells.Length; i++)
         {
+            PlayerPrefs.SetInt("Spell" + i.ToString(), chosenspells[i]);
             if (chosenspells[i] != -1)
             {
                 playerFightScript.spells[i] = spellBook.SpellDataBase[chosenspells[i]];
@@ -116,5 +124,21 @@ public class SpellBookUI : MonoBehaviour
     {
         uIControl.UpdateSpells(chosenspells);
     }
-    
+    void loadPlayerPrefsSpells()
+    {
+        //Initialize spells from playerprefs
+        for (int i = 0; i < chosenspells.Length; i++)
+        {
+            if (PlayerPrefs.HasKey("Spell" + i.ToString()))
+            {
+                chosenspells[i] = PlayerPrefs.GetInt("Spell" + i.ToString());
+            }
+            else
+            {
+                chosenspells = new int[] { -1, -1, -1 };
+            }
+        }
+        OnChosenSpellsChange();
+        UpdateInGameUI();
+    }
 }
