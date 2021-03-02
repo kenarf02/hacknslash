@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Quest : MonoBehaviour
+[System.Serializable]
+public class Quest 
 {
+    public int id;
     public string title;
     public string description;
     public bool isActive;
     public bool Completed;
     public int ItemReward;
     public int GoldReward;
-    public Quest(string _title,string _description,int item,int gold)
+    public Quest(int _id,string _title,string _description,int item,int gold)
     {
+        id = _id;
         title = _title;
         description = _description;
         ItemReward = item;

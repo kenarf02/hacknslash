@@ -14,6 +14,7 @@ public class NpcDialogueScript : MonoBehaviour
     public GameObject optionsField;
     GameObject source;
     bool isactive = false;
+    QuestDatabase quests;
 
     const float TEXTPRINTSPEED = 0.02f;
 
@@ -21,7 +22,7 @@ public class NpcDialogueScript : MonoBehaviour
     public GameObject buttonOfOption;
     GameManager gameManager;
     ItemDatabase itemDatabase;
-
+    
     //Options and such
     public GameObject Dialogue;
     //Shop
@@ -38,8 +39,10 @@ public class NpcDialogueScript : MonoBehaviour
     }
     private void Start()
     {
+        quests = GameObject.Find("QUEST MANAGER").GetComponent<QuestDatabase>();
         itemDatabase = GameObject.Find("EQUIPMENT MANAGER").GetComponent<ItemDatabase>();
         gameManager = GameObject.Find("GAME MANAGER").GetComponent<GameManager>();
+        
     }
     public void Initialize(DialogueFragment _fragment, GameObject _src)
     {
@@ -144,6 +147,7 @@ public class NpcDialogueScript : MonoBehaviour
     void StartQuest()
     {
         QuestDatabase qm = GameObject.Find("QUEST MANAGER").GetComponent<QuestDatabase>();
+        source.GetComponent<NpcStartDialogue>().InitializeDialogueLine();
         if (fragment.StartsQuest)
         {
             if (qm.Quests[fragment.QuestId].isActive != true && qm.Quests[fragment.QuestId].Completed != true)
@@ -167,6 +171,7 @@ public class NpcDialogueScript : MonoBehaviour
                 source.GetComponent<NpcStartDialogue>().thisNpcDialogue = source.GetComponent<QuestGiverDialogueLines>().finishedQuest;
             }
         }
+        quests.Save();
         //TODO: Alternative dialogue if not completed but active
     }
     void OpenShop()

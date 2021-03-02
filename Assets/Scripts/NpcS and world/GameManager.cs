@@ -61,7 +61,10 @@ public class GameManager : MonoBehaviour
     }
     public void Save()
     {
-        levelobj.OverworldPosition = GameObject.Find("Player").transform.position;
+        if (SceneManager.GetActiveScene().name == "Overworld")
+        {
+            levelobj.OverworldPosition = GameObject.Find("Player").transform.position;
+        }
         levelobj.Playerlevel = Level;
         levelobj.Save();
     }
@@ -78,6 +81,7 @@ public class GameManager : MonoBehaviour
     private void OnApplicationQuit()
     {
         Save();
+        Savestats();
         GameObject.Find("EQUIPMENT MANAGER").GetComponent<EquipmentManager>().SaveEq();
 
     }

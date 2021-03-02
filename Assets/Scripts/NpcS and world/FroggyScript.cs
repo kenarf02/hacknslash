@@ -23,13 +23,15 @@ public class FroggyScript : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        if (GameObject.Find("QUEST MANAGER").GetComponent<QuestDatabase>().Quests[0].Completed != true && GameObject.Find("QUEST MANAGER").GetComponent<QuestDatabase>().Quests[0].isActive == true) {
+        QuestDatabase quests = GameObject.Find("QUEST MANAGER").GetComponent<QuestDatabase>();
+        if (quests.Quests[0].Completed != true && quests.GetComponent<QuestDatabase>().Quests[0].isActive == true) {
             if ((transform.position - GameObject.Find("Player").transform.position).magnitude <= 4)
             {
                 GameObject.Find("QUEST MANAGER").GetComponent<QuestDatabase>().Quests[0].Completed = true;
                 Debug.Log("Froggy quest completed");
-                GameObject.Find("Gabrysia").GetComponent<NpcStartDialogue>().thisNpcDialogue = GameObject.Find("Gabrysia").GetComponent<QuestGiverDialogueLines>().QuestDone;
+                GameObject.Find("Gabrysia").GetComponent<NpcStartDialogue>().InitializeDialogueLine();
                 //TODO: ADD SOME PARTICLES WHEN FROG DISAPPEARS
+                quests.Save();
                 Destroy(gameObject);
             }
         }

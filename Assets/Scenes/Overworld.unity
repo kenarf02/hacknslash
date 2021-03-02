@@ -7956,6 +7956,7 @@ MonoBehaviour:
   player: {fileID: 87390630}
   levelobj: {fileID: 11400000, guid: a786edc50b4588e48b66166987df17e1, type: 2}
   eqSaver: {fileID: 11400000, guid: e460eb1d68c44ca4fb85d8bd8dbef538, type: 2}
+  spellBookUI: {fileID: 2090247827}
 --- !u!4 &1647837545
 Transform:
   m_ObjectHideFlags: 0
@@ -8003,6 +8004,10 @@ MonoBehaviour:
   - {fileID: 974915494}
   - {fileID: 50717905}
   - {fileID: 871591703}
+  spellslotsicons:
+  - {fileID: 146805683}
+  - {fileID: 329200668}
+  - {fileID: 1219327343}
   levelObject: {fileID: 11400000, guid: a786edc50b4588e48b66166987df17e1, type: 2}
 --- !u!114 &1647837548
 MonoBehaviour:
@@ -8016,6 +8021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2b4682b18ad6c24eb1bd18faf084438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expCategories: []
 --- !u!1 &1652025674
 GameObject:
   m_ObjectHideFlags: 0
@@ -8348,6 +8354,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisNpcDialogue: {fileID: 11400000, guid: 011a1613186d4d44cb41ae6ea4bfde93, type: 2}
+  npcDialogueScript: {fileID: 0}
+  givenquest: -1
 --- !u!1 &1840855978
 GameObject:
   m_ObjectHideFlags: 0
@@ -10162,6 +10170,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisNpcDialogue: {fileID: 11400000, guid: aba1912265b01f240b992217fd3b0a72, type: 2}
+  npcDialogueScript: {fileID: 0}
+  givenquest: 0
 --- !u!136 &919132148051003569
 CapsuleCollider:
   m_ObjectHideFlags: 0
