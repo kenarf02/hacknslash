@@ -29,7 +29,6 @@ public class NpcStartDialogue : MonoBehaviour
     {
         if(!quests.Quests[givenquest].Completed && !quests.Quests[givenquest].isActive)
         {
-            thisNpcDialogue = thisNpcDialogue;
         }
         else if(!quests.Quests[givenquest].Completed && quests.Quests[givenquest].isActive)
         {

@@ -18,18 +18,20 @@ public class PlayerMotor : MonoBehaviour
     }
     private void Update()
     {
-        if (!agent.hasPath)
+        if (agent.velocity.magnitude != 0)
+        {
+            anim.SetBool("Run", true);
+        }
+        else
         {
             anim.SetBool("Run", false);
-        
         }
+
     }
     public void MoveToPoint(Vector3 point){
         if (gameManager.PlayerCanWalk)
         {
             agent.SetDestination(point);
-            anim.SetBool("Run",true);
-           
         }
     }
     public void StopMovement()

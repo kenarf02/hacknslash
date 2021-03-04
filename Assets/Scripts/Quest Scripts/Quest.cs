@@ -12,12 +12,27 @@ public class Quest
     public bool Completed;
     public int ItemReward;
     public int GoldReward;
-    public Quest(int _id,string _title,string _description,int item,int gold)
+    public int progress;
+    public Quest(int _id,string _title,string _description,int item,int gold,int _progress)
     {
         id = _id;
         title = _title;
         description = _description;
         ItemReward = item;
         GoldReward = gold;
+        progress = _progress;
+    }
+    public void CheckForComplete()
+    {
+        if (progress <= 0)
+        {
+            Debug.LogError("Quest complete: " + title);
+            Completed = true;
+        }
+    }
+    public void ChangeProgress(int amount)
+    {
+        progress -= amount;
+        CheckForComplete();
     }
 }

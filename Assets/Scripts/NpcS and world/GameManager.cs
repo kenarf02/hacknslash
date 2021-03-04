@@ -67,6 +67,8 @@ public class GameManager : MonoBehaviour
         }
         levelobj.Playerlevel = Level;
         levelobj.Save();
+        GameObject.Find("EQUIPMENT MANAGER").GetComponent<EquipmentManager>().SaveEq();
+        GameObject.Find("QUEST MANAGER").GetComponent<QuestDatabase>().Save();
     }
     public void Savestats()
     {
@@ -77,12 +79,14 @@ public class GameManager : MonoBehaviour
         levelobj.MaxHealth = playerFightScript.MaxHP;
         levelobj.Health = playerFightScript.HP;
         levelobj.Save();
+        GameObject.Find("EQUIPMENT MANAGER").GetComponent<EquipmentManager>().SaveEq();
+        GameObject.Find("QUEST MANAGER").GetComponent<QuestDatabase>().Save();
     }
     private void OnApplicationQuit()
     {
         Save();
         Savestats();
-        GameObject.Find("EQUIPMENT MANAGER").GetComponent<EquipmentManager>().SaveEq();
+        
 
     }
 
