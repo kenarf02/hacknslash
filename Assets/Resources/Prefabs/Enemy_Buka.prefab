@@ -415,6 +415,7 @@ MonoBehaviour:
   damagedelay: 0.4
   maxDamage: 1
   minDamage: 3
+  lastDmgType: 0
   DropPrefab: {fileID: 6452685778969370595, guid: a65a80253fbb95242aa21af8af51286a, type: 3}
   PopUpPrefab: {fileID: 1849391457604597000, guid: 09d05ec0da691d44fa71dcf601dd8108, type: 3}
   DropItems: 01000000
@@ -697,6 +698,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyBuka
       objectReference: {fileID: 0}
+    - target: {fileID: 8417361359673230750, guid: 49c8df59949d94e47828c6b9fa1a80a3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c4277372f560d0744952433743c08788, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49c8df59949d94e47828c6b9fa1a80a3, type: 3}
 --- !u!1 &6520621351667943231 stripped

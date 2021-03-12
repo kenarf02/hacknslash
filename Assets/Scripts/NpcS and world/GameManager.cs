@@ -19,11 +19,27 @@ public class GameManager : MonoBehaviour
     {
         GetComponent<SpellBook>().buildDataBase();
         levelobj.Load();
+        if (levelobj.isinside)
+        {
+            if(SceneManager.GetActiveScene().name == "Overworld")
+            {
+                SceneManager.LoadScene(1);
+            }
+            GameObject.Find("INSIDEMANAGER").GetComponent<InsideManager>().Spawn();
+        }
+        else
+        {
+            if (SceneManager.GetActiveScene().name != "Overworld")
+            {
+                SceneManager.LoadScene(0);
+            }
+        }
         spellBookUI.Initialize();
         if (SceneManager.GetActiveScene().name == "Overworld")
         {
             player.transform.position = levelobj.OverworldPosition;
         }
+        
         if (PlayerPrefs.HasKey("LevelInitialized"))
         {
             if (PlayerPrefs.GetInt("LevelInitialized") == 0)
@@ -65,6 +81,7 @@ public class GameManager : MonoBehaviour
         {
             levelobj.OverworldPosition = GameObject.Find("Player").transform.position;
         }
+      
         levelobj.Playerlevel = Level;
         levelobj.Save();
         GameObject.Find("EQUIPMENT MANAGER").GetComponent<EquipmentManager>().SaveEq();

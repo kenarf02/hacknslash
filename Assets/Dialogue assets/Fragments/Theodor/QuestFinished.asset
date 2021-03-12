@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: QuestFinished
   m_EditorClassIdentifier: 
   Text: Those damn rats are still in my inn! I can't cope with 'em
-  ChoiceKeys: []
-  ChoiceValues: []
+  ChoiceKeys:
+  - Show me your items (Opens shop)
+  ChoiceValues:
+  - {fileID: 11400000, guid: 23fbf480b25d0d4469ffaffece1911f1, type: 2}
   OpenShop: 0
   StartsQuest: 0
   QuestId: 1

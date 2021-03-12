@@ -53,12 +53,11 @@ public class Exp : MonoBehaviour
     {
         foreach (ExpCategory category in expCategories)
         {
-            for(int i = 0; i < PlayerPrefs.GetInt(category.title); i++)
-            {
-                category.levelUp();
-                category.expToNext = PlayerPrefs.GetInt(category.title + "Remaining");
-            }
+
+            category.currentlevel = PlayerPrefs.GetInt(category.title);
+            category.expToNext = PlayerPrefs.GetInt(category.title + "Remaining");
         }
+        SaveExp();
         CheckforLevelUp();
     }
 }

@@ -11,7 +11,7 @@ public class LevelObject : ScriptableObject
     public int Health, MaxHealth;
     public int Mana, MaxMana;
     public int Money;
-    
+    public bool isinside;
     public void Save()
     {
         PlayerPrefs.SetFloat("XPos", OverworldPosition.x);
@@ -24,6 +24,7 @@ public class LevelObject : ScriptableObject
         PlayerPrefs.SetInt("Mana", Mana);
         PlayerPrefs.SetInt("MaxMana", MaxMana);
         PlayerPrefs.SetInt("Money", Money);
+        PlayerPrefs.SetInt("IsInside", isinside ? 1 : 0);
         PlayerPrefs.Save();
     }
     public void Load()
@@ -38,6 +39,7 @@ public class LevelObject : ScriptableObject
             Mana = PlayerPrefs.GetInt("Mana");
             MaxMana = PlayerPrefs.GetInt("MaxMana");
             Money = PlayerPrefs.GetInt("Money");
+            isinside = PlayerPrefs.GetInt("IsInside") == 1 ? true : false;
         }
         else
         {
@@ -57,6 +59,7 @@ public class LevelObject : ScriptableObject
         PlayerPrefs.SetInt("Mana", 10);
         PlayerPrefs.SetInt("MaxMana", 10);
         PlayerPrefs.SetInt("Money", 100);
+        PlayerPrefs.SetInt("IsInside", 0);
         PlayerPrefs.Save();
         Load();
     }

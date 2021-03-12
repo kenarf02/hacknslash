@@ -112,7 +112,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3846018093981099296, guid: f2c65e7e21c48c04ba32487a84c3bc4e, type: 3}
+  - {fileID: 2100000, guid: 5eae5f15931037540a887ee94b429d6f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -239,6 +239,7 @@ GameObject:
   - component: {fileID: 3349322222642266609}
   - component: {fileID: 3022363598068136308}
   - component: {fileID: 3022363598068136305}
+  - component: {fileID: 7443280658917126159}
   m_Layer: 0
   m_Name: FroggyFriend
   m_TagString: Untagged
@@ -304,6 +305,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &7443280658917126159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2679921588901141323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5f0c5e727ce9ef4dad59e640913076f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nametext: {fileID: 7291764218571075382}
 --- !u!1 &2821974978024991607
 GameObject:
   m_ObjectHideFlags: 0

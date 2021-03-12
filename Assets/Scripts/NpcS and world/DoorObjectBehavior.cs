@@ -21,6 +21,7 @@ public class DoorObjectBehavior : MonoBehaviour
         {
             if (LevelToMove != -1)
             {
+                levelobj.isinside = true;
                 levelobj.InsideLevel = LevelToMove;
                 SceneManager.LoadScene(1);
                 GameObject.Find("EQUIPMENT MANAGER").GetComponent<EquipmentManager>().SaveEq();
@@ -29,7 +30,9 @@ public class DoorObjectBehavior : MonoBehaviour
             }
             else
             {
+                levelobj.isinside = false ;
                 gm.Savestats();
+                gm.Save();
                 GameObject.Find("EQUIPMENT MANAGER").GetComponent<EquipmentManager>().SaveEq();
                 SceneManager.LoadScene(0);
             }

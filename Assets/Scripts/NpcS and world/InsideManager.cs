@@ -18,9 +18,14 @@ public class InsideManager : MonoBehaviour
     }
     public void Spawn()
     {
+        foreach(GameObject level in levels)
+        {
+            level.SetActive(false);
+        }
         currentlevel = levels[levelobj.InsideLevel];
         currentlevel.SetActive(true);
         player.transform.position = currentlevel.transform.Find("Spawn").position;
+        Debug.Log(currentlevel.transform.Find("Spawn").position);
     }
     public void Despawn()
     {

@@ -459,6 +459,7 @@ MonoBehaviour:
   damagedelay: 0.7
   maxDamage: 1
   minDamage: 3
+  lastDmgType: 0
   DropPrefab: {fileID: 6452685778969370595, guid: a65a80253fbb95242aa21af8af51286a, type: 3}
   PopUpPrefab: {fileID: 1849391457604597000, guid: 09d05ec0da691d44fa71dcf601dd8108, type: 3}
   DropItems: 01000000
@@ -693,6 +694,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2843909369972686622, guid: 237c1a8dde59fe745b43b344a223ea39, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c4277372f560d0744952433743c08788, type: 2}
     - target: {fileID: 919132149155446097, guid: 237c1a8dde59fe745b43b344a223ea39, type: 3}
       propertyPath: m_Name
       value: Rat-Man

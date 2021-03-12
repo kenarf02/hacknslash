@@ -408,7 +408,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6478536213147159724, guid: 3cf37a01abdb93d47b9e4a51fbbdc454, type: 3}
+  - {fileID: 2100000, guid: c4277372f560d0744952433743c08788, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -527,6 +527,7 @@ MonoBehaviour:
   damagedelay: 0.7
   maxDamage: 1
   minDamage: 3
+  lastDmgType: 0
   DropPrefab: {fileID: 6452685778969370595, guid: a65a80253fbb95242aa21af8af51286a, type: 3}
   PopUpPrefab: {fileID: 1849391457604597000, guid: 09d05ec0da691d44fa71dcf601dd8108, type: 3}
   DropItems: 01000000
