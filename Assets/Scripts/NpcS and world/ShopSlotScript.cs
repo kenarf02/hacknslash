@@ -60,7 +60,14 @@ public class ShopSlotScript : MonoBehaviour
         INTBonus = param.transform.GetChild(8).gameObject.GetComponent<Text>();
         DEXBonus = param.transform.GetChild(9).gameObject.GetComponent<Text>();
         costText = param.transform.GetChild(10).gameObject.GetComponent<Text>();
-        costText.text = "Cost: "+cost.ToString();
+        if (cost != 0)
+        {
+            costText.text = "Cost: " + cost.ToString();
+        }
+        else
+        {
+            costText.text = "";
+        }
         titleText.text = item.title;
         DescText.text = item.descrpition;
         Icon.sprite = item.icon;

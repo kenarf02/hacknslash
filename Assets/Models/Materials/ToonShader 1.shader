@@ -78,6 +78,7 @@
 				float4 _MainTex_ST;
 				float _Brightness;
 				float _Strength;
+				float4 _Color;
 				v2f vert (appdata_tan v)
 				{
 					v2f o;
@@ -99,7 +100,7 @@
 				fixed4 frag(v2f i) : COLOR
 				{
 					fixed atten = SHADOW_ATTENUATION(i); // Shadows ONLY.
-					return (tex2D(_MainTex, i.uv) * atten/40)*Toon(i.worldNormal, _WorldSpaceLightPos0.xyz)*_Strength+_Brightness;;
+					return ((tex2D(_MainTex, i.uv) * atten/40)*Toon(i.worldNormal, _WorldSpaceLightPos0.xyz)*_Strength)*_Color+_Brightness;;
 				}
 			ENDCG
 		}

@@ -61,6 +61,14 @@ public class EnemyScript : MonoBehaviour
         {
             Die();
         }
+        if (agent.velocity.magnitude != 0)
+        {
+            anim.SetBool("Walk", true);
+        }
+        else
+        {
+            anim.SetBool("Walk", false);
+        }
     }
 
     void Seek()
@@ -69,10 +77,6 @@ public class EnemyScript : MonoBehaviour
         {
             following = true;
             Follow();
-        }
-        else
-        {
-            anim.SetBool("Walk", false);
         }
     }
     void Follow()

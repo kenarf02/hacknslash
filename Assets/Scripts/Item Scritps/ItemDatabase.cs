@@ -79,7 +79,17 @@ public class ItemDatabase : MonoBehaviour
                 {"AttackSpeed",2},
                 {"AttackRange",3 }
             }),
-            new Item(9, "Minor Potion of Healing","Heals small amount of health",Type.usableItem,Vector3.zero,Vector3.zero,null)
+            new Item(9, "Minor Potion of Healing","Heals small amount of health",Type.usableItem,Vector3.zero,Vector3.zero,null),
+            new Item(10,"Pickaxe","Used for mining and killing monsters",Type.weapon,new Vector3(0,0,90f),new Vector3(0.0008827197f,0.000877101f,-0.0134993f),new Dictionary<string, int>
+            {
+                {"MaxDMG",1},
+                {"MinDMG",4},
+                {"BonusSTR",5},
+                {"BonusDEX",5},
+                {"BonusINT",5},
+                {"AttackSpeed",2},
+                {"AttackRange",3 }
+            }),
             };
     }
     Item GetItem(string itemtitle)

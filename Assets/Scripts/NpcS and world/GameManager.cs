@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     SpellBookUI spellBookUI;
     private void Awake()
     {
+        Application.targetFrameRate = 400;
         GetComponent<SpellBook>().buildDataBase();
         levelobj.Load();
         if (levelobj.isinside)

@@ -13,10 +13,13 @@ public class RatHuntQuestScript : MonoBehaviour
     }
     private void OnDestroy()
     {
-        if (quests.Quests[OnGoingQuest].isActive && !quests.Quests[OnGoingQuest].Completed)
+        if (OnGoingQuest != -1)
         {
-            Debug.Log(quests.Quests[OnGoingQuest].title + "updated");
-            quests.Quests[OnGoingQuest].ChangeProgress(1);
+            if (quests.Quests[OnGoingQuest].isActive && !quests.Quests[OnGoingQuest].Completed)
+            {
+                Debug.Log(quests.Quests[OnGoingQuest].title + "updated");
+                quests.Quests[OnGoingQuest].ChangeProgress(1);
+            }
         }
     }
 }

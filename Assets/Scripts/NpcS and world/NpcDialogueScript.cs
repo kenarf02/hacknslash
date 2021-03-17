@@ -75,6 +75,10 @@ public class NpcDialogueScript : MonoBehaviour
             {
                 StartQuest();
             }
+            if (fragment.OpenShop)
+            {
+                OpenShop();
+            }
         }
     }
     void DestroyAllOptions()

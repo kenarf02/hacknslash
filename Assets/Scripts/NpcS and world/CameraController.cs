@@ -5,6 +5,8 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public Transform target;
+    
+    //used for outlining player when behind something
 
     public Vector3 offset;
     public float zoomSpeed = 4f;
@@ -20,9 +22,12 @@ public class CameraController : MonoBehaviour
     private float currentZoom = 10f;
     private float yawInput = 0f;
 
+    [SerializeField]
+    private RaycastHit[] hits = null;
+
     void Update()
     {
-       currentZoom -= Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
+        currentZoom -= Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
         currentZoom = Mathf.Clamp(currentZoom, minZoom, maxZoom);
 
         yawInput -= Input.GetAxis("Horizontal") * yawSpeed * Time.deltaTime;
@@ -33,4 +38,5 @@ public class CameraController : MonoBehaviour
         transform.LookAt(target.position + Vector3.up * pitch);
         transform.RotateAround(target.position, Vector3.up, yawInput);
     }
+   
 }
