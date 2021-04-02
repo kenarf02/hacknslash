@@ -90,6 +90,23 @@ public class ItemDatabase : MonoBehaviour
                 {"AttackSpeed",2},
                 {"AttackRange",3 }
             }),
+            new Item(11,"Iron Warhammer","Dangarous weapon in hands of a strong warrior",Type.weapon,new Vector3(0,0,90f),new Vector3(0.0007f,0f,0.0036f),new Dictionary<string, int>
+            {
+                {"MaxDMG",1},
+                {"MinDMG",4},
+                {"BonusSTR",5},
+                {"BonusDEX",5},
+                {"BonusINT",5},
+                {"AttackSpeed",2},
+                {"AttackRange",3 }
+            }),
+            new Item(12,"Goblin brute chestplate","You might think it's too big, yet it fits perfectly",Type.body,new Vector3(-90f,0,0),new Vector3(0,-0.06f,-0.0048f),new Dictionary<string, int>
+            {
+                {"Armor",10},
+                {"BonusSTR",1},
+                {"BonusDEX",1},
+                {"BonusINT",1},
+            }),
             };
     }
     Item GetItem(string itemtitle)

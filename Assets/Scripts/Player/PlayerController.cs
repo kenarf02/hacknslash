@@ -47,7 +47,10 @@ public class PlayerController : MonoBehaviour
                             motor.MoveToPoint(hit.point);
                         }
                     playerFightScript.DeleteCircle();
-                    isCasting = false;
+                    if (!playerFightScript.spellbeingcast)
+                    {
+                        isCasting = false;
+                    }
                     }
 
                 if (hit.collider.tag == "Enemy")
@@ -66,12 +69,16 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    playerFightScript.target = null;
+                   
                     if (GameObject.FindGameObjectWithTag("Circle"))
                     {
                         Destroy(GameObject.FindGameObjectWithTag("Circle"));
                     }
-                    isCasting = false;
+                    if (!playerFightScript.spellbeingcast)
+                    {
+                        isCasting = false;
+                        playerFightScript.target = null;
+                    }
                 }
 
 
