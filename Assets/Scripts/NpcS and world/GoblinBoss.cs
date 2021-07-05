@@ -12,6 +12,7 @@ enum state
 }
 public class GoblinBoss : MonoBehaviour
 {
+    bool attacking;
     [SerializeField]
     state currstate;
     Transform player;
@@ -24,6 +25,8 @@ public class GoblinBoss : MonoBehaviour
     [SerializeField]
     float ConfusionTime;
     Animator anim;
+    [SerializeField]
+    GameObject attackSpot;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -37,7 +40,10 @@ public class GoblinBoss : MonoBehaviour
             Charge();
         } else if (currstate == state.attackstate)
         {
-            Attack();
+            if (!attacking)
+            {
+                Attack();
+            }
         }
         else if (currstate == state.movestate)
         {
@@ -54,8 +60,8 @@ public class GoblinBoss : MonoBehaviour
     }
     void Idle()
     {
-        anim.SetBool("Charge", false);
-        anim.SetTrigger("AttackFinished");
+        anim.SetBool("Charging", false);
+        //anim.SetTrigger("AttackFinished");
     }
     void Charge()
     {
@@ -63,15 +69,40 @@ public class GoblinBoss : MonoBehaviour
     }
     void Attack()
     {
+        attacking = true;
         anim.SetTrigger("Attack");
+        SpawnAttackSpots();
+        StartCoroutine(attackTime(3f));
     }
     void Move()
     {
-        anim.SetBool("Charge",true);
+        anim.SetBool("Charging", true);
     }
     void Confusion()
     {
-        anim.SetBool("Charge", false) ;
+        anim.SetBool("Charging", false) ;
+    }
+   
+    void RandomizeStates()
+    {
+
+    }
+    void SpawnAttackSpots()
+    {
+        int amount = Random.Range(3, 7);
+        for (int i = 0; i < amount; i++) {
+           GameObject param = Instantiate(attackSpot, transform.position + new Vector3(Random.Range(-15,15),-1.5f,Random.Range(-15,15)),Quaternion.identity,transform.parent);
+            param.GetComponent<CircleIndicator>().DoRenderer();
+        }
+    }
+    IEnumerator attackTime(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
         anim.SetTrigger("AttackFinished");
+        currstate = state.idle;
+        attacking = false;
+        Debug.LogError("Stopped coroutine");
+        StopAllCoroutines();
+        yield return null;
     }
 }

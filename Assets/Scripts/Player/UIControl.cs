@@ -20,6 +20,10 @@ public class UIControl : MonoBehaviour
     Image[] spellslotsicons = new Image[3];
     [SerializeField]
     LevelObject levelObject;
+    [SerializeField]
+    GameObject PauseMenu;
+    [SerializeField]
+    GameObject inGameui;
     private void Start()
     {
         equipmentManager = GameObject.Find("EQUIPMENT MANAGER").GetComponent<EquipmentManager>();
@@ -39,13 +43,20 @@ public class UIControl : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (!PauseMenu.activeInHierarchy)
         {
-            equipmentManager.OpenUI();
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                equipmentManager.OpenUI();
+            }
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                EnableSpellUI();
+            }
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            EnableSpellUI();
+            TogglePause();
         }
     }
 
@@ -138,6 +149,22 @@ public class UIControl : MonoBehaviour
                     spellslotsicons[i].color = Color.red;
                 }
             }
+        }
+    }
+    public void TogglePause()
+    {
+        if (PauseMenu.activeInHierarchy)
+        {
+            
+            PauseMenu.SetActive(false);
+            inGameui.SetActive(true);
+            Time.timeScale = 1f;
+        }
+        else
+        {
+            PauseMenu.SetActive(true);
+            inGameui.SetActive(false);
+            Time.timeScale = 0f;
         }
     }
 }
